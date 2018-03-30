@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ll.wagesmanager.mapper.UserMapper">
+
+    <sql id="column_insert_key">
+        id,name,age,sex,address,tel
+    </sql>
+
+    <sql id="column_insert_value">
+        uuid(),#{name},#{age},#{sex},#{address},#{tel}
+    </sql>
+
+    <insert id="create">
+        insert into user (<include refid="column_insert_key"/>) VALUES (<include refid="column_insert_value"/>)
+    </insert>
+
+    <update id="updateOne">
+        update user
+        <set>
+            <trim suffixOverrides=",">
+                <if test="name!=null and name !=''">
+                    name = #{name},
+                </if>
+                <if test="age!=null">
+                    age = #{age},
+                </if>
+                <if test="sex!=null and sex !=''">
+                    sex = #{sex},
+                </if>
+                <if test="address!=null and address !=''">
+                    address = #{address},
+                </if>
+                <if test="tel!=null">
+                    tel = #{tel},
+                </if>
+            </trim>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="queryPageByMap" resultType="com.ll.wagesmanager.entity.User">
+        select * from user
+         limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <select id="queryPageByMapCount" resultType="java.lang.Long">
+        select count(*) from user
+    </select>
+</mapper>
