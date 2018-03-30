@@ -14,30 +14,39 @@ import java.util.Map;
 public interface UserService {
     /**
      * 查询用户列表
+     *
      * @param pageable
      * @return
      */
-    Page<User> queryPageByMap(Map map,Pageable pageable );
+    Page<User> queryPageByMap(Map map, Pageable pageable);
 
     /**
      * 新增用户
+     *
      * @param user
      */
     void create(User user);
 
     /**
      * 修改用户
+     *
      * @param user
      */
     void updateOne(User user);
 
     /**
      * 删除用户
+     *
      * @param id
      */
     void deleteOne(String id);
 
-
+    /**
+     * 修改密码
+     * @param id
+     * @param password
+     */
+    void updatePassword(String id, String password);
 
 }
 

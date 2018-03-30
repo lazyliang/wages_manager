@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ll.wagesmanager.mapper.WagesMapper">
+
+    <sql id="column_key">
+        id,num,`year`,`month`,base_wages,addtion,overtime,`sum`,user_id,ycqts
+    </sql>
+    <sql id="column_value">
+        uuid(),#{num},#{year},#{month},#{baseWages},#{addtion},#{overTime},#{sum},#{userId},#{ycqts}
+    </sql>
+    <insert id="createOne">
+        insert into wages (<include refid="column_key"/>) VALUES (<include refid="column_value"/>)
+    </insert>
+
+    <select id="findByUserId">
+        select * from wages
+        <where>
+            <trim suffixOverrides=",">
+                user_id = #{userId}
+                <if test="month!=null and month!=''">
+                   and `month` = #{month},
+                </if>
+                <if test="year!=null and year!=''">
+                   and `year` = #{year},
+                </if>
+            </trim>
+        </where>
+    </select>
+</mapper>

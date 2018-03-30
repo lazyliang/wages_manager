@@ -48,8 +48,15 @@ public class UserManager implements UserService {
         }
     }
 
+    @Transactional
     @Override
     public void deleteOne(String id) {
+        userMapper.deleteOne(id);
+    }
 
+    @Transactional
+    @Override
+    public void updatePassword(String id,String password){
+        userMapper.updatePassword(id,password);
     }
 }

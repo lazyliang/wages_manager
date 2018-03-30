@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiOperation;
 import me.cf81.commons.web.bind.annotation.FormModel;
 import me.cf81.commons.web.bind.util.MapWrapper;
 import me.cf81.commons.web.model.RestResult;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -33,12 +32,12 @@ public class UserController {
 
     })
     @GetMapping("/users:search")
-    public Page<User> selectAll(@FormModel MapWrapper<String,Object>mapWrapper,@PageableDefault Pageable pageable){
-        try{
-            return userService.queryPageByMap(mapWrapper.toMap(),pageable);
-        }catch (Exception e){
+    public Page<User> selectAll(@FormModel MapWrapper<String, Object> mapWrapper, @PageableDefault Pageable pageable) {
+        try {
+            return userService.queryPageByMap(mapWrapper.toMap(), pageable);
+        } catch (Exception e) {
             e.printStackTrace();
-           throw Exceptions.ERROR.buildException();
+            throw Exceptions.ERROR.buildException();
         }
     }
 
@@ -48,11 +47,11 @@ public class UserController {
 
     })
     @PostMapping("/uesr/insert")
-    public RestResult create(@RequestBody User user){
-        try{
+    public RestResult create(@RequestBody User user) {
+        try {
             userService.create(user);
             return RestResult.success();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             throw Exceptions.INSERT_ERROR.buildException();
         }
@@ -64,13 +63,45 @@ public class UserController {
 
     })
     @PutMapping("/user/updateOne")
-    public RestResult updateOne(@RequestBody User user){
-        try{
+    public RestResult updateOne(@RequestBody User user) {
+        try {
             userService.updateOne(user);
             return RestResult.success();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             throw Exceptions.ERROR.buildException();
+        }
+    }
+
+    @ApiOperation(value = "删除用户")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true),
+
+    })
+    @DeleteMapping("/user/deleteOne")
+    public RestResult deleteOne(@RequestParam String id) {
+        try {
+            userService.deleteOne(id);
+            return RestResult.success();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw Exceptions.EXSIT_CHILDREN_ERROR.buildException();
+        }
+    }
+
+    @ApiOperation(value = "修改密码")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true),
+
+    })
+    @PutMapping("/user:password")
+    public RestResult updatePwd(String id, String password) {
+        try {
+            userService.updatePassword(id,password);
+            return RestResult.success();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw Exceptions.UPDATE_ERROR.buildException();
         }
     }
 }

@@ -3,11 +3,11 @@
 <mapper namespace="com.ll.wagesmanager.mapper.UserMapper">
 
     <sql id="column_insert_key">
-        id,name,age,sex,address,tel
+        id,name,age,sex,address,tel,login_name,password
     </sql>
 
     <sql id="column_insert_value">
-        uuid(),#{name},#{age},#{sex},#{address},#{tel}
+        uuid(),#{name},#{age},#{sex},#{address},#{tel},#{loginName},#{password}
     </sql>
 
     <insert id="create">
@@ -46,4 +46,20 @@
     <select id="queryPageByMapCount" resultType="java.lang.Long">
         select count(*) from user
     </select>
+
+    <update id="deleteOne" >
+        update user set is_delete = 1 where id = #{id}
+    </update>
+
+    <update id="updatePassword">
+        update user
+        <set>
+            <if test="password!=null and password!=''">
+                password = #{password}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
 </mapper>

@@ -10,7 +10,9 @@ public enum Exceptions implements ResultMessage {
     EXSIT_CHILDREN_ERROR("2003","存在子关联未删除！"),
     IMPORT_ERROR("2004", "导入失败！"),
     SPAREPART_ERROR("2005","导出失败"),
-    INSERT_ERROR("2006","新增失败")
+    INSERT_ERROR("2006","新增失败"),
+    UPDATE_ERROR("2007","修改失败"),
+    LOGIN_ERROR("2008","登陆错误"),
     ;
 
     Exceptions(String code, String msg) {

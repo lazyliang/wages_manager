@@ -11,3 +11,20 @@ CREATE TABLE `user` (
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `wages` (
+  `id` varchar(255) NOT NULL DEFAULT '' COMMENT 'id',
+  `num` int(11) DEFAULT NULL COMMENT '员工编号',
+  `year` varchar(50) DEFAULT '' COMMENT '年份',
+  `month` varchar(50) DEFAULT '' COMMENT '月份',
+  `base_wages` int(11) DEFAULT '0' COMMENT '基本工资',
+  `addtion` int(11) DEFAULT '0' COMMENT '津贴',
+  `overtime` int(11) DEFAULT '0' COMMENT '加班工资',
+  `sum` int(11) DEFAULT '0' COMMENT '总工资',
+  `user_id` varchar(50) NOT NULL,
+  `ycqts` int(11) DEFAULT '0' COMMENT '出勤天数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+insert into user (id, name, age, sex, address, tel)VALUES ('test','lazyliang','20','男','武汉市','114')

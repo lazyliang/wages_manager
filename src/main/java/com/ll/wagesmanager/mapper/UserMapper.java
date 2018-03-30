@@ -23,4 +23,8 @@ public interface UserMapper {
 
     void updateOne(User user);
 
+    void deleteOne(String id);
+
+    void updatePassword(@Param("id") String id,@Param("password")String password);
+
 }
