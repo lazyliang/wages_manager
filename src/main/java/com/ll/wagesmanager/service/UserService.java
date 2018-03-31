@@ -48,5 +48,12 @@ public interface UserService {
      */
     void updatePassword(String id, String password);
 
+    /**
+     * 根据登录名查询当前用户信息
+     * @param loginName
+     * @return
+     */
+    User findByLoginName(String loginName);
+
 }
 

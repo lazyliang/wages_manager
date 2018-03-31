@@ -59,4 +59,11 @@ public class UserManager implements UserService {
     public void updatePassword(String id,String password){
         userMapper.updatePassword(id,password);
     }
+
+    @Override
+    public User findByLoginName(String loginName) {
+        return userMapper.findByLoginName(loginName);
+    }
+
+
 }

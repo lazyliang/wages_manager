@@ -62,4 +62,11 @@
             id = #{id}
         </where>
     </update>
+
+    <select id="findByLoginName" resultType="com.ll.wagesmanager.entity.User">
+        select id,`name`,login_name as loginName,age,sex,is_delete as isDelete,state from USER
+        <where>
+            login_name = #{loginName}
+        </where>
+    </select>
 </mapper>

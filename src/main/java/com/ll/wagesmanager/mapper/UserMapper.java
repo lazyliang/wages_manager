@@ -27,4 +27,6 @@ public interface UserMapper {
 
     void updatePassword(@Param("id") String id,@Param("password")String password);
 
+    User findByLoginName(String loginName);
+
 }
