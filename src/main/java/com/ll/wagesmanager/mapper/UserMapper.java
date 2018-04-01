@@ -29,4 +29,6 @@ public interface UserMapper {
 
     User findByLoginName(String loginName);
 
+    void createMany(List<User> users);
+
 }

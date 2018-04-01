@@ -3,6 +3,7 @@ package com.ll.wagesmanager.controller;
 import com.ll.wagesmanager.Exceptions;
 import com.ll.wagesmanager.entity.User;
 import com.ll.wagesmanager.service.UserService;
+import com.ll.wagesmanager.utils.Upload;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     UserService userService;
+
+    public static final String path = "F:\\user\\";
 
     @ApiOperation(value = "查询用户列表")
     @ApiImplicitParams(value = {
@@ -102,6 +106,23 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
             throw Exceptions.UPDATE_ERROR.buildException();
+        }
+    }
+
+    @ApiOperation(value = "用户导入")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true),
+
+    })
+    @PostMapping("/user/import")
+    public RestResult importExcel(@RequestParam("file")MultipartFile file){
+        try{
+            String filePath = path+ Upload.upLoadFile(file,path);
+            userService.importExcel(filePath);
+            return RestResult.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw Exceptions.IMPORT_ERROR.buildException();
         }
     }
 }

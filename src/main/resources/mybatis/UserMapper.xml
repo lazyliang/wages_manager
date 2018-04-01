@@ -69,4 +69,11 @@
             login_name = #{loginName}
         </where>
     </select>
+
+<insert id="createMany">
+    insert into user(id,name,login_name,password)VALUES
+    <foreach collection="list" item="user" separator=",">
+        (#{user.id},#{user.name},#{user.loginName},#{user.password})
+    </foreach>
+</insert>
 </mapper>

@@ -59,4 +59,6 @@ class LoginController( val loginService: LoginService,val userServcie :UserServi
         throw Exceptions.GET_DATA_ERROR.buildException()
     }
 
+
+
 }
