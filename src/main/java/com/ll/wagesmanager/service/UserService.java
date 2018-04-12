@@ -56,7 +56,19 @@ public interface UserService {
      */
     User findByLoginName(String loginName);
 
+    /**
+     * 用户批量导入
+     * @param filePath
+     * @throws IOException
+     */
     void importExcel(String filePath) throws IOException;
+
+    /**
+     * 通过用户ID获取用户详细信息
+     * @param id
+     * @return
+     */
+    User findOne(String id );
 
 }
 

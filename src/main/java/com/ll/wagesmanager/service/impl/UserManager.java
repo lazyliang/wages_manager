@@ -75,9 +75,15 @@ public class UserManager implements UserService {
     @Override
     @Transactional
     public void importExcel(String filePath) throws IOException {
+        String  name = filePath.substring(filePath.lastIndexOf("."));
         List userList = ExcelUtil.readXls(filePath);
         userMapper.createMany(userList);
 
+    }
+
+    @Override
+    public User findOne(String id) {
+       return userMapper.findOne(id);
     }
 
 

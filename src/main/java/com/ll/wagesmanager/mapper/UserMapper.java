@@ -31,4 +31,6 @@ public interface UserMapper {
 
     void createMany(List<User> users);
 
+    User findOne(String id);
+
 }

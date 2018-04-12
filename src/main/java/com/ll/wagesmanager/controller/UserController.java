@@ -50,7 +50,7 @@ public class UserController {
             @ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true),
 
     })
-    @PostMapping("/uesr/insert")
+    @PostMapping("/user/insert")
     public RestResult create(@RequestBody User user) {
         try {
             userService.create(user);
@@ -125,4 +125,19 @@ public class UserController {
             throw Exceptions.IMPORT_ERROR.buildException();
         }
     }
+    @ApiOperation(value = "查询单个用户详情")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true),
+
+    })
+    @GetMapping("/user/findOne")
+    public User findOne(String id ){
+        try{
+            return userService.findOne(id);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw Exceptions.GET_DATA_ERROR.buildException();
+        }
+    }
+
 }
