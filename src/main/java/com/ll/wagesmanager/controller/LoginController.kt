@@ -29,7 +29,7 @@ class LoginController( val loginService: LoginService,val userServcie :UserServi
 
 
     @ApiOperation(value = "验证用户", notes = "用户登陆验证")
-    @ApiImplicitParams(value = [
+    @ApiImplicitParams(value = *[
         ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true)
     ])
     @PostMapping("/login")
@@ -48,7 +48,7 @@ class LoginController( val loginService: LoginService,val userServcie :UserServi
     }
 
     @ApiOperation(value = "查询当前用户", notes = "根据当前用户名查询")
-    @ApiImplicitParams(value = [
+    @ApiImplicitParams(value = *[
         ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true)
     ])
     @GetMapping("/findOne")
