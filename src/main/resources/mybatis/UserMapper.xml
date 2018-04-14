@@ -3,6 +3,10 @@
 <mapper namespace="com.ll.wagesmanager.mapper.UserMapper">
 
     <sql id="column_insert_key">
+        id,name,age,sex,address,tel,login_name,password
+    </sql>
+
+    <sql id="column_select_key">
         id,name,age,sex,address,tel,login_name as loginName,password
     </sql>
 
@@ -39,7 +43,7 @@
     </update>
 
     <select id="queryPageByMap" resultType="com.ll.wagesmanager.entity.User">
-        select <include refid="column_insert_key"/> from user
+        select <include refid="column_select_key"/> from user
          limit #{pageable.offset}, #{pageable.pageSize}
     </select>
 

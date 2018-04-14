@@ -9,6 +9,8 @@ CREATE TABLE `user` (
   `is_delete` int(11) NOT NULL DEFAULT '0' COMMENT '删除状态',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `login_name` varchar(100) NOT NULL DEFAULT '' COMMENT '登录名',
+  `password` varchar(100) NOT NULL DEFAULT  '' COMMENT '密码',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -27,4 +29,5 @@ CREATE TABLE `wages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-insert into user (id, name, age, sex, address, tel)VALUES ('test','lazyliang','20','男','武汉市','114')
+insert into user (id, name, age, sex, address, tel,login_name,password)VALUES
+('test','lazyliang','20','男','武汉市','114','aa','aa');
