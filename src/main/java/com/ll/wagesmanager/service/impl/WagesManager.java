@@ -1,6 +1,7 @@
 package com.ll.wagesmanager.service.impl;
 
 import com.ll.wagesmanager.entity.Wages;
+import com.ll.wagesmanager.entity.WagesDto;
 import com.ll.wagesmanager.mapper.WagesMapper;
 import com.ll.wagesmanager.service.WagesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,12 @@ import java.util.Map;
 @Service
 public class WagesManager implements WagesService{
     @Autowired
-    WagesMapper wagesMapper;
+    private WagesMapper wagesMapper;
     @Override
-    public Page<Wages> queryPageByMap(Map map, Pageable pageable) {
+    public Page<WagesDto> queryPageByMap(Map map, Pageable pageable) {
         Long count = wagesMapper.queryPageByMapCount(map);
         if (count != 0) {
-            List<Wages> wagesList = wagesMapper.queryPageByMap(map, pageable);
+            List<WagesDto> wagesList = wagesMapper.queryPageByMap(map, pageable);
             return new PageImpl<>(wagesList, pageable, count);
         }
         return new PageImpl<>(new ArrayList<>());
@@ -35,6 +36,8 @@ public class WagesManager implements WagesService{
     @Transactional
     @Override
     public void createOne(Wages wages) {
+        wages.setSum(wages.getBaseWages()+wages.getAddtion()+
+        wages.getOverTime());
         wagesMapper.createOne(wages);
     }
 }

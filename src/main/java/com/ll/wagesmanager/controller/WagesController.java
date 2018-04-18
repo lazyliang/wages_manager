@@ -2,6 +2,7 @@ package com.ll.wagesmanager.controller;
 
 import com.ll.wagesmanager.Exceptions;
 import com.ll.wagesmanager.entity.Wages;
+import com.ll.wagesmanager.entity.WagesDto;
 import com.ll.wagesmanager.service.WagesService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -34,7 +35,7 @@ public class WagesController {
 
     })
     @GetMapping("/wages:search")
-    public Page<Wages> searchAll(@FormModel MapWrapper<String,Object>mapWrapper, @PageableDefault Pageable pageable){
+    public Page<WagesDto> searchAll(@FormModel MapWrapper<String,Object>mapWrapper, @PageableDefault Pageable pageable){
         try{
             return wagesService.queryPageByMap(mapWrapper.toMap(),pageable);
         }catch (Exception e){
@@ -58,5 +59,6 @@ public class WagesController {
             throw Exceptions.INSERT_ERROR.buildException();
         }
     }
+
 
 }

@@ -1,6 +1,7 @@
 package com.ll.wagesmanager.service;
 
 import com.ll.wagesmanager.entity.Wages;
+import com.ll.wagesmanager.entity.WagesDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,7 +18,7 @@ public interface WagesService {
      * @param pageable
      * @return
      */
-    Page<Wages> queryPageByMap(Map map, Pageable pageable);
+    Page<WagesDto> queryPageByMap(Map map, Pageable pageable);
 
     /**
      * 新增工资信息
