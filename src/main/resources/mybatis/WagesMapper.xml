@@ -28,12 +28,12 @@
     </select>
 
     <select id="queryPageByMap" resultType="com.ll.wagesmanager.entity.WagesDto">
-        select num,year,month,base_wages as baseWages,addtion,overtime,sum ,user_id as userId
-        ycqts from wages w JOIN  user u on u.id = w.user_id where is_delete
+        select num,year,month,base_wages as baseWages,addtion,overtime,sum ,user_id as userId,u.name as userName,
+        ycqts from wages w JOIN  user u on u.id = w.user_id where u.is_delete = 0
         limit #{pageable.offset}, #{pageable.pageSize}
     </select>
 
     <select id="queryPageByMapCount" resultType="java.lang.Long">
-        select count(1) from wages w JOIN  user u on u.id = w.user_id where is_delete
+        select count(1) from wages w JOIN  user u on u.id = w.user_id where u.is_delete = 0
     </select>
 </mapper>
