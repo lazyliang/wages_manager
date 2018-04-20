@@ -76,7 +76,7 @@
     <select id="findByLoginName" resultType="com.ll.wagesmanager.entity.User">
         select id,`name`,login_name as loginName,age,sex,is_delete as isDelete,state from USER
         <where>
-            login_name = #{loginName}
+            login_name = #{loginName}  and is_delete = 0
         </where>
     </select>
 
@@ -88,6 +88,10 @@
 </insert>
 
     <select id="findOne" resultType="com.ll.wagesmanager.entity.User">
-        SELECT id,name,age,sex,address,tel from user where id = #{id}
+        SELECT id,name,age,sex,address,tel from user where id = #{id} and is_delete = 0
+    </select>
+
+    <select id="loginNameIsEmpty" resultType="com.ll.wagesmanager.entity.User">
+        select login_name from user  where login_name = #{loginName} and is_delete = 0
     </select>
 </mapper>

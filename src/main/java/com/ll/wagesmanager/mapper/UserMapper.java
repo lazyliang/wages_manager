@@ -33,4 +33,6 @@ public interface UserMapper {
 
     User findOne(String id);
 
+    User  loginNameIsEmpty(String loginName);
+
 }

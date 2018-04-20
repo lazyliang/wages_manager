@@ -1,5 +1,6 @@
 package com.ll.wagesmanager.service.impl;
 
+import com.ll.wagesmanager.Exceptions;
 import com.ll.wagesmanager.entity.User;
 import com.ll.wagesmanager.mapper.UserMapper;
 import com.ll.wagesmanager.service.UserService;
@@ -29,6 +30,8 @@ public class UserManager implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
+
     public static final String originUrl = "F:\\user\\excel.xls";
 
     @Override
@@ -44,7 +47,11 @@ public class UserManager implements UserService {
     @Transactional
     @Override
     public void create(User user) {
-        userMapper.create(user);
+        if (userMapper.loginNameIsEmpty(user.getLoginName())==null) {
+            userMapper.create(user);
+        }else {
+            throw Exceptions.INSERT_ERROR.buildException();
+        }
     }
 
     @Transactional
