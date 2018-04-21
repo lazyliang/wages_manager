@@ -3,10 +3,10 @@
 <mapper namespace="com.ll.wagesmanager.mapper.WagesMapper">
 
     <sql id="column_key">
-        id,num,`year`,`month`,base_wages,addtion,overtime,`sum`,user_id,ycqts
+        id,num,`year`,`month`,base_wages,addtion,overtime,`sum`,user_id,ycqts,yk
     </sql>
     <sql id="column_value">
-        uuid(),#{num},#{year},#{month},#{baseWages},#{addtion},#{overTime},#{sum},#{userId},#{ycqts}
+        uuid(),#{num},#{year},#{month},#{baseWages},#{addtion},#{overTime},#{sum},#{userId},#{ycqts},#{yk}
     </sql>
     <insert id="createOne">
         insert into wages (<include refid="column_key"/>) VALUES (<include refid="column_value"/>)
@@ -28,7 +28,7 @@
     </select>
 
     <select id="queryPageByMap" resultType="com.ll.wagesmanager.entity.WagesDto">
-        select num,year,month,base_wages as baseWages,addtion,overtime,sum ,user_id as userId,u.name as userName,
+        select w.id,num,year,month,base_wages as baseWages,addtion,overtime,sum ,user_id as userId,u.name as userName,yk,
         ycqts from wages w JOIN  user u on u.id = w.user_id where u.is_delete = 0
         limit #{pageable.offset}, #{pageable.pageSize}
     </select>

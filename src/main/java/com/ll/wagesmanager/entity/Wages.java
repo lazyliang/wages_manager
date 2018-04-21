@@ -14,6 +14,15 @@ public class Wages {
     private Integer sum; //总工资
     private String userId; //用户ID
     private Integer ycqts; //出勤天数
+    private Integer yk;
+
+    public Integer getYk() {
+        return yk;
+    }
+
+    public void setYk(Integer yk) {
+        this.yk = yk;
+    }
 
     public String getId() {
         return id;

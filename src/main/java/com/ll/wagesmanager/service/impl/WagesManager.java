@@ -37,7 +37,7 @@ public class WagesManager implements WagesService{
     @Override
     public void createOne(Wages wages) {
         wages.setSum(wages.getBaseWages()+wages.getAddtion()+
-        wages.getOverTime());
+        wages.getOverTime()-wages.getYk());
         wagesMapper.createOne(wages);
     }
 }
