@@ -27,5 +27,15 @@ public interface WagesService {
      */
     void createOne(Wages wages);
 
+    /**
+     * 修改单个工资信息
+     * @param wagesDto
+     */
+    void updateOne(Wages wages);;
 
+    /**
+     * 根据ID删除
+     * @param id
+     */
+   void deleteOne(String id);
 }

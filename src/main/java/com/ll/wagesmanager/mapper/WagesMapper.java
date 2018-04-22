@@ -21,4 +21,10 @@ public interface WagesMapper {
 
     void createOne(Wages wages);
 
+    void updateOne(Wages wages);
+
+    WagesDto findOne(WagesDto wagesDto);
+
+    void deleteOne(String id);
+
 }

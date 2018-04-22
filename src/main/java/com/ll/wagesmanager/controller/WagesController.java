@@ -14,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -59,6 +56,38 @@ public class WagesController {
             throw Exceptions.INSERT_ERROR.buildException();
         }
     }
+
+    @ApiOperation(value = "修改工资信息")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true),
+
+    })
+    @PutMapping("/wages/updateOne")
+    public RestResult updateOne (@RequestBody Wages wages){
+        try{
+            wagesService.updateOne(wages);
+            return RestResult.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw Exceptions.UPDATE_ERROR.buildException();
+        }
+    }
+    @ApiOperation(value = "删除单个工资信息")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true),
+
+    })
+    @DeleteMapping("/wages/deleteOne")
+    public RestResult deleteOne(String id){
+        try{
+            wagesService.deleteOne(id);
+            return RestResult.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw Exceptions.DELETE_ERROR.buildException();
+        }
+    }
+
 
 
 }

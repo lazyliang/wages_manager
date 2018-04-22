@@ -14,7 +14,17 @@ public class Wages {
     private Integer sum; //总工资
     private String userId; //用户ID
     private Integer ycqts; //出勤天数
-    private Integer yk;
+    private Integer yk;  //应扣工资
+    private Integer isDelete; //删除状态
+
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
 
     public Integer getYk() {
         return yk;

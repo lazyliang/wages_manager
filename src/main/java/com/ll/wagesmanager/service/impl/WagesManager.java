@@ -36,8 +36,26 @@ public class WagesManager implements WagesService{
     @Transactional
     @Override
     public void createOne(Wages wages) {
-        wages.setSum(wages.getBaseWages()+wages.getAddtion()+
-        wages.getOverTime()-wages.getYk());
+        setSumfromother(wages);
         wagesMapper.createOne(wages);
     }
+
+    @Transactional
+    @Override
+    public void updateOne(Wages wages) {
+       setSumfromother(wages);
+      wagesMapper.updateOne(wages);
+    }
+
+    @Transactional
+    @Override
+    public void deleteOne(String id) {
+        wagesMapper.deleteOne(id);
+    }
+
+    public void setSumfromother(Wages wages){
+        wages.setSum(wages.getBaseWages()+wages.getAddtion()+
+                wages.getOverTime()-wages.getYk());
+    }
+
 }
