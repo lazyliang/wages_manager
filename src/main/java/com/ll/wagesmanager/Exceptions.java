@@ -13,7 +13,7 @@ public enum Exceptions implements ResultMessage {
     INSERT_ERROR("2006","新增失败"),
     UPDATE_ERROR("2007","修改失败"),
     LOGIN_ERROR("2008","登陆错误"),
-    DELETE_ERROR("2009","删除失败")
+    DELETE_ERROR("2009","删除失败"),
     ;
 
     Exceptions(String code, String msg) {

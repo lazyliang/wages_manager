@@ -17,7 +17,7 @@ public class User
     private Integer age;   //年龄
     private String sex;    //性别
     private String address;  //地址
-    private Integer tel;   //电话
+    private String tel;   //电话
     private Integer state;   //用户权限 0是普通用户 1是管理员
     private Integer isDelete; //删除状态 0是未删除 1是已删除
 
@@ -93,11 +93,11 @@ public class User
         this.address = address;
     }
 
-    public Integer getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(Integer tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

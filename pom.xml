@@ -99,8 +99,26 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.17</version>
 		</dependency>
+		<dependency>
+			<groupId>me.cf81</groupId>
+			<artifactId>cf81-commons-utils</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 
-    </dependencies>
+		<dependency>
+			<groupId>me.cf81</groupId>
+			<artifactId>cf81-commons-web</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>me.cf81</groupId>
+			<artifactId>cf81-sso</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+
+	</dependencies>
 
 
 
@@ -109,6 +127,30 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<version>${kotlin.version}</version>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-compile</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>test-compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<jvmTarget>1.8</jvmTarget>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
