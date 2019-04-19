@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ll.wagesmanager.mapper.UserMapper">
+
+    <sql id="column_insert_key">
+        id,name,age,sex,address,tel,login_name,password
+    </sql>
+
+    <sql id="column_select_key">
+        id,name,age,sex,address,tel,login_name as loginName,password
+    </sql>
+
+    <sql id="column_insert_value">
+        uuid(),#{name},#{age},#{sex},#{address},#{tel},#{loginName},#{password}
+    </sql>
+
+    <insert id="create">
+        insert into user (<include refid="column_insert_key"/>) VALUES (<include refid="column_insert_value"/>)
+    </insert>
+
+    <update id="updateOne">
+        update user
+        <set>
+            <trim suffixOverrides=",">
+                <if test="name!=null and name !=''">
+                    name = #{name},
+                </if>
+                <if test="age!=null">
+                    age = #{age},
+                </if>
+                <if test="sex!=null and sex !=''">
+                    sex = #{sex},
+                </if>
+                <if test="address!=null and address !=''">
+                    address = #{address},
+                </if>
+                <if test="tel!=null and tel!=''">
+                    tel = #{tel},
+                </if>
+                <if test="loginName!=null and loginName !=''">
+                    login_name = #{loginName},
+                </if>
+                <if test="password !=null and password !=''">
+                    password = #{password},
+                </if>
+            </trim>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="queryPageByMap" resultType="com.ll.wagesmanager.entity.User">
+        select <include refid="column_select_key"/> from user where is_delete = 0
+         limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <select id="queryPageByMapCount" resultType="java.lang.Long">
+        select count(*) from user where is_delete = 0
+    </select>
+
+    <update id="deleteOne" >
+        update user set is_delete = 1 where id = #{id}
+    </update>
+
+    <update id="updatePassword">
+        update user
+        <set>
+            <if test="password!=null and password!=''">
+                password = #{password}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <select id="findByLoginName" resultType="com.ll.wagesmanager.entity.User">
+        select id,`name`,login_name as loginName,age,sex,is_delete as isDelete,state from USER
+        <where>
+            login_name = #{loginName}  and is_delete = 0
+        </where>
+    </select>
+
+<insert id="createMany">
+    insert into user(id,name,login_name,password)VALUES
+    <foreach collection="list" item="user" separator=",">
+        (#{user.id},#{user.name},#{user.loginName},#{user.password})
+    </foreach>
+</insert>
+
+    <select id="findOne" resultType="com.ll.wagesmanager.entity.User">
+        SELECT id,name,age,sex,address,tel from user where id = #{id} and is_delete = 0
+    </select>
+
+    <select id="loginNameIsEmpty" resultType="com.ll.wagesmanager.entity.User">
+        select login_name from user  where login_name = #{loginName} and is_delete = 0
+    </select>
+</mapper>

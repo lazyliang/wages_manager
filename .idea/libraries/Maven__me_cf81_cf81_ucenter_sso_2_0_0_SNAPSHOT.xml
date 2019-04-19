@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: me.cf81:cf81-ucenter-sso:2.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-sso/2.0.0-SNAPSHOT/cf81-ucenter-sso-2.0.0-20190415.033248-29.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-sso/2.0.0-SNAPSHOT/cf81-ucenter-sso-2.0.0-20190415.033248-29-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-sso/2.0.0-SNAPSHOT/cf81-ucenter-sso-2.0.0-20190415.033248-29-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

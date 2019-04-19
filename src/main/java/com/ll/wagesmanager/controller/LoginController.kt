@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiOperation
 import me.cf81.commons.web.model.RestException
 import me.cf81.commons.web.model.RestResult
 import me.cf81.commons.web.sso.WebSessionUser
-import me.cf81.sso.SSOConstants
+import me.cf81.ucenter.sso.SSOConstants
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
@@ -33,10 +33,10 @@ class LoginController( val loginService: LoginService,val userServcie :UserServi
         ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true)
     ])
     @PostMapping("/login")
-    fun login( loginName: String,  password: String): RestResult = try {
+    fun login( loginName: String,  password: String): RestResult<String> = try {
         var validate:Int = 0
         if (loginService.login(loginName, password)==200)validate=200 else validate=500
-        RestResult.success(validate)
+        RestResult.success(validate.toString())
     } catch (e: RestException) {
         e.resultMessage.buildRestResult();
     } catch (e: Exception) {

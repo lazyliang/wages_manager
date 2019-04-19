@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: me.cf81:cf81-commons-utils:1.2.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-commons-utils/1.2.4-SNAPSHOT/cf81-commons-utils-1.2.4-20190318.055231-3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-commons-utils/1.2.4-SNAPSHOT/cf81-commons-utils-1.2.4-20190318.055231-3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-commons-utils/1.2.4-SNAPSHOT/cf81-commons-utils-1.2.4-20190318.055231-3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

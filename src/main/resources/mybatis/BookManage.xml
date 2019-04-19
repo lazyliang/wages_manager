@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ll.wagesmanager.mapper.BookManageDao">
+    <sql id="column">
+        t.id AS id,
+        t.bookName as bookName,
+        t.author as author,
+        t.publicationDate as publicationDate,
+        t.abstracts as abstracts,
+    </sql>
+    <select id="count" resultType="java.lang.Integer">
+        select count(1) from bookInfo
+    </select>
+    <select id="queryAllBook" resultType="com.ll.wagesmanager.model.Book">
+        select id,bookName,author,publicationDate,abstracts from bookInfo
+        <where>
+        <trim suffixOverrides="and">
+            <if test="map.bookName!=null and map.bookName!=''">
+               and bookName = #{map.bookName}
+            </if>
+            <if test="author!=null and map.author!=''">
+               and author = #{map.author}
+            </if>
+        </trim>
+        </where>
+        limit #{pageable.offset},#{pageable.pageSize}
+    </select>
+<!--    <select id="searchBookByName" resultType="com.ll.wagesmanager.model.Book">-->
+<!--        select id,bookName,author,publicationDate,abstracts-->
+<!--        from bookInfo-->
+<!--        where bookName=#{map.search.waitSearchName}-->
+<!--    </select>-->
+</mapper>
