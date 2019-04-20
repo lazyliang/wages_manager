@@ -3,7 +3,7 @@ package com.ll.wagesmanager.service.impl;
 import com.ll.wagesmanager.mapper.BookManageDao;
 import com.ll.wagesmanager.model.Book;
 import com.ll.wagesmanager.service.BookManageService;
-import me.cf81.commons.web.model.data.PageableResponse;
+//import me.cf81.commons.web.model.data.PageableResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -29,9 +29,9 @@ public class BookManageServiceImp implements BookManageService {
         int count = bookManageDao.count();
         if (count != 0) {
             List<Book> books = bookManageDao.queryAllBook(map, pageable);
-            return new PageableResponse<>(books, pageable, count);
+            return new PageImpl<>(books, pageable, count);
         }
-        return new PageableResponse<>(new ArrayList<>());
+        return new PageImpl<>(new ArrayList<>());
     }
 
 
