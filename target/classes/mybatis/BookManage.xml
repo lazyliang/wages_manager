@@ -14,14 +14,10 @@
     <select id="queryAllBook" resultType="com.ll.wagesmanager.model.Book">
         select id,bookName,author,publicationDate,abstracts from bookInfo
         <where>
-        <trim suffixOverrides="and">
-            <if test="map.bookName!=null and map.bookName!=''">
-               and bookName = #{map.bookName}
+            <if test="map.nameOrAuthor!=null and map.nameOrAuthor!=''">
+                bookName like concat( '%', #{map.nameOrAuthor}, '%' ) or
+                author like concat('%', #{map.nameOrAuthor},'%')
             </if>
-            <if test="author!=null and map.author!=''">
-               and author = #{map.author}
-            </if>
-        </trim>
         </where>
         limit #{pageable.offset},#{pageable.pageSize}
     </select>
