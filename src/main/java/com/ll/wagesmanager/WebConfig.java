@@ -1,18 +1,24 @@
 package com.ll.wagesmanager;
 
 
+import me.cf81.commons.web.bind.FormModelMethodArgumentResolver;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-//@Configuration
+import java.util.List;
+
+@Configuration
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-//    @Override
-//    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-//        argumentResolvers.add(formModelMethodArgumentResolver());
-//    }
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(formModelMethodArgumentResolver());
+    }
 //
 //    @Override
 //    public void addInterceptors(InterceptorRegistry registry) {
@@ -57,11 +63,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //    }
 
 
-//    @Bean
-//    public FormModelMethodArgumentResolver formModelMethodArgumentResolver() {
-//        return new FormModelMethodArgumentResolver();
-//    }
-//
+    @Bean
+    public FormModelMethodArgumentResolver formModelMethodArgumentResolver() {
+        return new FormModelMethodArgumentResolver();
+    }
+
 //    @Bean
 //    public WebLoginInterceptor webLoginInterceptor() {
 //        return new WebLoginInterceptor();

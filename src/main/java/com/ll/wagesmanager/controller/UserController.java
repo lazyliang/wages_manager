@@ -33,10 +33,11 @@ public class UserController {
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "x-access-token", value = "令牌", paramType = "header", required = true),
             @ApiImplicitParam(name = "page", value = "页码，从0开始", paramType = "query"),
+            @ApiImplicitParam(name = "search.name", value = "页码，从0开始", paramType = "query"),
 
     })
     @GetMapping("/users:search")
-    public Page<User> selectAll(@FormModel MapWrapper<String, Object> mapWrapper, @PageableDefault Pageable pageable) {
+    public Page<User> selectAll(@FormModel MapWrapper mapWrapper, @PageableDefault Pageable pageable) {
         try {
             return userService.queryPageByMap(mapWrapper.toMap(), pageable);
         } catch (Exception e) {

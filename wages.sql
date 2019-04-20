@@ -28,6 +28,15 @@ CREATE TABLE `wages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+create table bookInfo
+(
+id varchar(100),
+bookName varchar(30),
+author varchar(30),
+publicationDate varchar(50),
+abstract varchar(300)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 insert into user (id, name, age, sex, address, tel,login_name,password)VALUES
 ('test','lazyliang','20','男','武汉市','114','aa','aa');

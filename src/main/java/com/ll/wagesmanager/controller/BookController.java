@@ -32,9 +32,9 @@ public class BookController {
 
     })
     @GetMapping("/search:books")
-    public Page<Book> searchAllBook(@RequestParam Map<String, String> map, @ApiIgnore Pageable pageable){
+    public Page<Book> searchAllBook(@FormModel MapWrapper map, @ApiIgnore Pageable pageable){
         try {
-            return bookManageService.searchAllBooks(map, pageable);
+            return bookManageService.searchAllBooks(map.toMap(), pageable);
         }catch (Exception e){
             e.printStackTrace();
             throw Exceptions.ERROR.buildException();
