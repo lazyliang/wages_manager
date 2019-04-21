@@ -7,6 +7,8 @@
         t.author as author,
         t.publicationDate as publicationDate,
         t.abstracts as abstracts,
+        t.type1=type1,
+        t.type2=type2
     </sql>
     <select id="count" resultType="java.lang.Integer">
         select count(1) from bookInfo
@@ -14,10 +16,16 @@
     <select id="queryAllBook" resultType="com.ll.wagesmanager.model.Book">
         select id,bookName,author,publicationDate,abstracts from bookInfo
         <where>
-            <if test="map.nameOrAuthor!=null and map.nameOrAuthor!=''">
-                bookName like concat( '%', #{map.nameOrAuthor}, '%' ) or
-                author like concat('%', #{map.nameOrAuthor},'%')
+            <if test="map.type1!=null and map.type1!='' and map.type2!=null and map.type2!=''">
+                (type1=#{map.type1} and type2=#{map.type2})
             </if>
+
+            <if test="map.nameOrAuthor!=null and map.nameOrAuthor!=''">
+                and (bookName like concat( '%', #{map.nameOrAuthor}, '%' ) or
+                author like concat('%', #{map.nameOrAuthor},'%'))
+            </if>
+
+
         </where>
         limit #{pageable.offset},#{pageable.pageSize}
     </select>

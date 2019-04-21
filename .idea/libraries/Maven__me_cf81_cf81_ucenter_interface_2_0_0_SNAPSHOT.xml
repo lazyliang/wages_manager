@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: me.cf81:cf81-ucenter-interface:2.0.0-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-interface/2.0.0-SNAPSHOT/cf81-ucenter-interface-2.0.0-20190415.033247-37.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-interface/2.0.0-SNAPSHOT/cf81-ucenter-interface-2.0.0-20190420.091647-41.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-interface/2.0.0-SNAPSHOT/cf81-ucenter-interface-2.0.0-20190415.033247-37-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-interface/2.0.0-SNAPSHOT/cf81-ucenter-interface-2.0.0-20190420.091647-41-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-interface/2.0.0-SNAPSHOT/cf81-ucenter-interface-2.0.0-20190415.033247-37-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/me/cf81/cf81-ucenter-interface/2.0.0-SNAPSHOT/cf81-ucenter-interface-2.0.0-20190420.091647-41-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
